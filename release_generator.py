@@ -26,13 +26,12 @@ if os.path.exists(tarname):
 with tarfile.open(tarname,"w:gz", dereference=True, format=tarfile.GNU_FORMAT) as tar:
     files = os.listdir("./megaavr")
     for file in files:
-        print(os.path.basename(file))
         if file == "extras" or file == ".":
             continue
         tar.add("./megaavr/" + file, arcname="SparkEVO-ArduinoCore-tinyAVR/" + os.path.basename(file), recursive=True)
 
 print()
-print("\"name\": \"SparkEVO tinyAVR Boards (32-bits ARM Cortex-M0+)\",")
+print("\"name\": \"SparkEVO tinyAVR Boards\",")
 print("\"architecture\": \"megaavr\",")
 print("\"version\": \"" + version + "\",")
 print("\"category\": \"SparkEVO\",")
