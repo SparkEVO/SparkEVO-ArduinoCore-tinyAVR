@@ -19,6 +19,17 @@ def sha256sum(filename):
 
 
 version = args.version
+
+# update platform.txt
+version_split = version.split('.')
+platform = open("megaavr/platform.txt.source", "rt");
+platform_str = platform.read()
+platform_str = platform_str.replace('[[VERSION]]', str(version)).replace('[[VERSION_MAJ]]', str(version_split[0])).replace('[[VERSION_MIN]]', str(version_split[1])).replace('[[VERSION_PAT]]', str(version_split[2]))
+platform.close()
+platform = open("megaavr/platform.txt", "wt");
+platform.write(platform_str)
+platform.close()
+
 tarname = "SparkEVO-ArduinoCore-tinyAVR-" + version + ".tar.gz"
 if os.path.exists(tarname):
     os.remove(tarname)

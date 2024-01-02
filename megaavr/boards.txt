@@ -223,8 +223,8 @@ sparkevo_rpmdot.menu.attach.allenabled.build.attachmode=-DCORE_ATTACH_ALL
 #----------------------------------------#
 # WDT MODE                               #
 #________________________________________#
-atxy4.menu.WDTtimeout.disabled=Disabled (recommended)
-atxy4.menu.WDTwindow.disabled=No delay before window "opens"
-atxy4.menu.WDTtimeout.disabled.bootloader.wdttimeoutbits=0000
-atxy4.menu.WDTwindow.disabled.bootloader.wdtwindowbits=0000
+sparkevo_rpmdot.menu.WDTtimeout.disabled=Disabled (recommended)
+sparkevo_rpmdot.menu.WDTwindow.disabled=No delay before window "opens"
+sparkevo_rpmdot.menu.WDTtimeout.disabled.bootloader.wdttimeoutbits=0000
+sparkevo_rpmdot.menu.WDTwindow.disabled.bootloader.wdtwindowbits=0000
 
