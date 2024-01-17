@@ -7,7 +7,7 @@
 name=SparkEVO tinyAVR Boards
 versionnum.major=1
 versionnum.minor=0
-versionnum.patch=1
+versionnum.patch=2
 versionnum.postfix=
 versionnum.released=1
 
@@ -16,7 +16,7 @@ version={versionnum.major}.{versionnum.minor}.{versionnum.patch}{versionnum.post
 # Stupid workaround #
 # for IDE bug       #
 #####################
-version=1.0.1
+version=1.0.2
 
 build.versiondefines=-DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} -DMEGATINYCORE="{version}" -DMEGATINYCORE_MAJOR={versionnum.major}UL -DMEGATINYCORE_MINOR={versionnum.minor}UL -DMEGATINYCORE_PATCH={versionnum.patch}UL -DMEGATINYCORE_RELEASED={versionnum.released}
 

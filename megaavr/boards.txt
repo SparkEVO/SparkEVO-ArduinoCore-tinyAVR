@@ -83,7 +83,7 @@ menu.attach=attachInterrupt Mode
 # Names listed at the top so they can be kept in consistent format
 
 sparkevo_rpmdot.name=SparkEVO RPM Dot
-sparkevo_itronix_sensorboard.name=SparkEVO iTronix SensorBoard
+sparkevo_itronix_sensorbox.name=SparkEVO iTronix SensorBox
 
 ##########################################################################
 #  Non-bootloader                                                        #
@@ -240,168 +240,168 @@ sparkevo_rpmdot.menu.WDTwindow.disabled.bootloader.wdtwindowbits=0000
 #                                        #
 # BUILD PARAMETERS                       #
 #________________________________________#
-sparkevo_itronix_sensorboard.build.text_section_start=.text=0x0
-sparkevo_itronix_sensorboard.build.millistimer=D0
-sparkevo_itronix_sensorboard.build.board=AVR_ATtinyxy6
-sparkevo_itronix_sensorboard.build.clocksource=0
-sparkevo_itronix_sensorboard.build.core=megatinycore
-sparkevo_itronix_sensorboard.build.mrelax= -mrelax
-sparkevo_itronix_sensorboard.build.variant=txy6
-#sparkevo_itronix_sensorboard.build.optimizationlevel=-Os
-sparkevo_itronix_sensorboard.build.gcse=
-sparkevo_itronix_sensorboard.build.tuned=
-sparkevo_itronix_sensorboard.build.printf=
-sparkevo_itronix_sensorboard.build.wire=MORS
-sparkevo_itronix_sensorboard.build.attachmode=-DCORE_ATTACH_ALL
-sparkevo_itronix_sensorboard.build.mcu=attiny{build.attiny}
-sparkevo_itronix_sensorboard.build.f_cpu={build.speed}000000L
-sparkevo_itronix_sensorboard.build.extra_flags=-DARDUINO_attinyxy6 {build.tuned}
-sparkevo_itronix_sensorboard.build.export_merged_output=false
-sparkevo_itronix_sensorboard.build.pwmflags=-DUSE_TIMERD0_PWM
+sparkevo_itronix_sensorbox.build.text_section_start=.text=0x0
+sparkevo_itronix_sensorbox.build.millistimer=D0
+sparkevo_itronix_sensorbox.build.board=AVR_ATtinyxy6
+sparkevo_itronix_sensorbox.build.clocksource=0
+sparkevo_itronix_sensorbox.build.core=megatinycore
+sparkevo_itronix_sensorbox.build.mrelax= -mrelax
+sparkevo_itronix_sensorbox.build.variant=txy6
+#sparkevo_itronix_sensorbox.build.optimizationlevel=-Os
+sparkevo_itronix_sensorbox.build.gcse=
+sparkevo_itronix_sensorbox.build.tuned=
+sparkevo_itronix_sensorbox.build.printf=
+sparkevo_itronix_sensorbox.build.wire=MORS
+sparkevo_itronix_sensorbox.build.attachmode=-DCORE_ATTACH_ALL
+sparkevo_itronix_sensorbox.build.mcu=attiny{build.attiny}
+sparkevo_itronix_sensorbox.build.f_cpu={build.speed}000000L
+sparkevo_itronix_sensorbox.build.extra_flags=-DARDUINO_attinyxy6 {build.tuned}
+sparkevo_itronix_sensorbox.build.export_merged_output=false
+sparkevo_itronix_sensorbox.build.pwmflags=-DUSE_TIMERD0_PWM
 
 #----------------------------------------#
 # BOOTLOADING PARAMETERS (FUSES)         #
 #________________________________________#
-sparkevo_itronix_sensorboard.bootloader.WDTCFG=0b{bootloader.wdtwindowbits}{bootloader.wdttimeoutbits}
-sparkevo_itronix_sensorboard.bootloader.BODCFG=0b{bootloader.bodlevbits}{bootloader.bodmodebits}
-sparkevo_itronix_sensorboard.bootloader.OSCCFG=0x01
-sparkevo_itronix_sensorboard.bootloader.TCD0CFG_avrdude=
-sparkevo_itronix_sensorboard.bootloader.TCD0CFG_serialupdi=
-sparkevo_itronix_sensorboard.bootloader.SYSCFG0=0b1100{bootloader.resetpinbits}0{bootloader.eesavebit}
-sparkevo_itronix_sensorboard.bootloader.APPEND=0x00
-sparkevo_itronix_sensorboard.bootloader.BOOTEND=0x00
-sparkevo_itronix_sensorboard.bootloader.resetpinbits=01
-sparkevo_itronix_sensorboard.bootloader.avrdudestring=
-sparkevo_itronix_sensorboard.bootloader.serialupdistring=-aerase
-sparkevo_itronix_sensorboard.bootloader.altreset=Alt reset pin not supported on 0/1-series.
-sparkevo_itronix_sensorboard.bootloader.tool=avrdude
+sparkevo_itronix_sensorbox.bootloader.WDTCFG=0b{bootloader.wdtwindowbits}{bootloader.wdttimeoutbits}
+sparkevo_itronix_sensorbox.bootloader.BODCFG=0b{bootloader.bodlevbits}{bootloader.bodmodebits}
+sparkevo_itronix_sensorbox.bootloader.OSCCFG=0x01
+sparkevo_itronix_sensorbox.bootloader.TCD0CFG_avrdude=
+sparkevo_itronix_sensorbox.bootloader.TCD0CFG_serialupdi=
+sparkevo_itronix_sensorbox.bootloader.SYSCFG0=0b1100{bootloader.resetpinbits}0{bootloader.eesavebit}
+sparkevo_itronix_sensorbox.bootloader.APPEND=0x00
+sparkevo_itronix_sensorbox.bootloader.BOOTEND=0x00
+sparkevo_itronix_sensorbox.bootloader.resetpinbits=01
+sparkevo_itronix_sensorbox.bootloader.avrdudestring=
+sparkevo_itronix_sensorbox.bootloader.serialupdistring=-aerase
+sparkevo_itronix_sensorbox.bootloader.altreset=Alt reset pin not supported on 0/1-series.
+sparkevo_itronix_sensorbox.bootloader.tool=avrdude
 
 #----------------------------------------#
 # Exported hex/lst/map names will        #
 # indicate selected options. These       #
 # are only to do that, nothing else      #
 #________________________________________#
-sparkevo_itronix_sensorboard.build.bootload=
-sparkevo_itronix_sensorboard.build.printfabr=
-sparkevo_itronix_sensorboard.build.attachabr=
-sparkevo_itronix_sensorboard.build.wireabr=
-sparkevo_itronix_sensorboard.build.pwmabr=6
-#sparkevo_itronix_sensorboard.build.optabr=.Os
+sparkevo_itronix_sensorbox.build.bootload=
+sparkevo_itronix_sensorbox.build.printfabr=
+sparkevo_itronix_sensorbox.build.attachabr=
+sparkevo_itronix_sensorbox.build.wireabr=
+sparkevo_itronix_sensorbox.build.pwmabr=6
+#sparkevo_itronix_sensorbox.build.optabr=.Os
 
 #----------------------------------------#
 # ALL UPLOADING VIA UPDI                 #
 #________________________________________#
-sparkevo_itronix_sensorboard.upload.tool=avrdude
-sparkevo_itronix_sensorboard.upload.workaround=
-sparkevo_itronix_sensorboard.upload.prog_interlock=
+sparkevo_itronix_sensorbox.upload.tool=avrdude
+sparkevo_itronix_sensorbox.upload.workaround=
+sparkevo_itronix_sensorbox.upload.prog_interlock=
 
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#
 # 20-pin 0/1-series tinyAVR submenus          #
 #_____________________________________________#
 # CHIP                                   #
 #________________________________________#
-sparkevo_itronix_sensorboard.menu.chip.1616=ATtiny1616
-sparkevo_itronix_sensorboard.menu.chip.1616.build.board=AVR_ATtiny1616
-sparkevo_itronix_sensorboard.menu.chip.1616.build.attiny=1616
-sparkevo_itronix_sensorboard.menu.chip.1616.upload.maximum_size=16384
-sparkevo_itronix_sensorboard.menu.chip.1616.upload.maximum_data_size=2048
-sparkevo_itronix_sensorboard.menu.chip.1616.bootloader.TCD0CFG_avrdude="-Ufuse4:w:0x00:m"
-sparkevo_itronix_sensorboard.menu.chip.1616.bootloader.TCD0CFG_serialupdi=4:0x00
+sparkevo_itronix_sensorbox.menu.chip.1616=ATtiny1616
+sparkevo_itronix_sensorbox.menu.chip.1616.build.board=AVR_ATtiny1616
+sparkevo_itronix_sensorbox.menu.chip.1616.build.attiny=1616
+sparkevo_itronix_sensorbox.menu.chip.1616.upload.maximum_size=16384
+sparkevo_itronix_sensorbox.menu.chip.1616.upload.maximum_data_size=2048
+sparkevo_itronix_sensorbox.menu.chip.1616.bootloader.TCD0CFG_avrdude="-Ufuse4:w:0x00:m"
+sparkevo_itronix_sensorbox.menu.chip.1616.bootloader.TCD0CFG_serialupdi=4:0x00
 
 #----------------------------------------#
 # CLOCK SOURCE                           #
 #________________________________________#
-sparkevo_itronix_sensorboard.menu.clock.16internal=16 MHz internal
-sparkevo_itronix_sensorboard.menu.clock.16internal.build.speed=16
-sparkevo_itronix_sensorboard.menu.clock.16internal.build.clocksource=0
+sparkevo_itronix_sensorbox.menu.clock.16internal=16 MHz internal
+sparkevo_itronix_sensorbox.menu.clock.16internal.build.speed=16
+sparkevo_itronix_sensorbox.menu.clock.16internal.build.clocksource=0
 
 #----------------------------------------#
 # BOD VOLTAGE                            #
 #________________________________________#
-sparkevo_itronix_sensorboard.menu.bodvoltage.4v2=4.2V (20 MHZ or less)
-sparkevo_itronix_sensorboard.menu.bodvoltage.4v2.bootloader.bodlevbits=111
+sparkevo_itronix_sensorbox.menu.bodvoltage.4v2=4.2V (20 MHZ or less)
+sparkevo_itronix_sensorbox.menu.bodvoltage.4v2.bootloader.bodlevbits=111
 
 #----------------------------------------#
 # BOD MODE                               #
 #________________________________________#
-sparkevo_itronix_sensorboard.menu.bodmode.enabled=Enabled/Enabled
-sparkevo_itronix_sensorboard.menu.bodmode.enabled.bootloader.bodmodebits=00101
+sparkevo_itronix_sensorbox.menu.bodmode.enabled=Enabled/Enabled
+sparkevo_itronix_sensorbox.menu.bodmode.enabled.bootloader.bodmodebits=00101
 
 #----------------------------------------#
 # EEPROM RETAIN                          #
 #________________________________________#
-sparkevo_itronix_sensorboard.menu.eesave.enable=EEPROM retained
-sparkevo_itronix_sensorboard.menu.eesave.enable.bootloader.eesavebit=1
+sparkevo_itronix_sensorbox.menu.eesave.enable=EEPROM retained
+sparkevo_itronix_sensorbox.menu.eesave.enable.bootloader.eesavebit=1
 
 #----------------------------------------#
 # MILLIS TIMER                           #
 #________________________________________#
-sparkevo_itronix_sensorboard.menu.millis.enabled=Enabled (default timer)
+sparkevo_itronix_sensorbox.menu.millis.enabled=Enabled (default timer)
 
 #----------------------------------------#
 # UPDI/RESET PIN CONFIGURATION           #
 #________________________________________#
-sparkevo_itronix_sensorboard.menu.resetpin.UPDI=UPDI (no reset pin)
-sparkevo_itronix_sensorboard.menu.resetpin.UPDI.bootloader.resetpinbits=01
+sparkevo_itronix_sensorbox.menu.resetpin.UPDI=UPDI (no reset pin)
+sparkevo_itronix_sensorbox.menu.resetpin.UPDI.bootloader.resetpinbits=01
 #Expert mode - if you understand what these mean, uncomment them to enable.
 #there are a few lines like this in platform.txt too that can be uncommented to enable for uploads, not just when burning bootloader
-#sparkevo_itronix_sensorboard.menu.resetpin.reset=Reset (DANGER - Bricks chip w/out HV UPDI programmer!)
-#sparkevo_itronix_sensorboard.menu.resetpin.reset.bootloader.resetpinbits=10
-#sparkevo_itronix_sensorboard.menu.resetpin.gpio=GPIO (DANGER - Bricks chip w/out HV UPDI programmer - Use PCHV)
-#sparkevo_itronix_sensorboard.menu.resetpin.gpio.bootloader.resetpinbits=00
+#sparkevo_itronix_sensorbox.menu.resetpin.reset=Reset (DANGER - Bricks chip w/out HV UPDI programmer!)
+#sparkevo_itronix_sensorbox.menu.resetpin.reset.bootloader.resetpinbits=10
+#sparkevo_itronix_sensorbox.menu.resetpin.gpio=GPIO (DANGER - Bricks chip w/out HV UPDI programmer - Use PCHV)
+#sparkevo_itronix_sensorbox.menu.resetpin.gpio.bootloader.resetpinbits=00
 
 #----------------------------------------#
 # STARTUP TIME (SUT)                     #
 #________________________________________#
-sparkevo_itronix_sensorboard.menu.startuptime.8=8ms
-sparkevo_itronix_sensorboard.menu.startuptime.8.bootloader.SYSCFG1=0x04
+sparkevo_itronix_sensorbox.menu.startuptime.8=8ms
+sparkevo_itronix_sensorbox.menu.startuptime.8.bootloader.SYSCFG1=0x04
 
 #----------------------------------------#
 # OPTIMIZATION OPTIONS                   #
 #________________________________________#
-#sparkevo_itronix_sensorboard.menu.optimization.size=-Os (size)
-#sparkevo_itronix_sensorboard.menu.optimization.sizegcse=-Os (size, no GCSE)
-#sparkevo_itronix_sensorboard.menu.optimization.o3=-O3 (speed)
-#sparkevo_itronix_sensorboard.menu.optimization.o3gcse=-O3 (speed, no GCSE)
-#sparkevo_itronix_sensorboard.menu.optimization.size.build.optimizationlevel=-Os
-#sparkevo_itronix_sensorboard.menu.optimization.sizegcse.build.optimizationlevel=-Os
-#sparkevo_itronix_sensorboard.menu.optimization.o3.build.optimizationlevel=-O3
-#sparkevo_itronix_sensorboard.menu.optimization.o3gcse.build.optimizationlevel=-O3
-#sparkevo_itronix_sensorboard.menu.optimization.size.build.optabr=.Os
-#sparkevo_itronix_sensorboard.menu.optimization.sizegcse.build.optabr=.Osng
-#sparkevo_itronix_sensorboard.menu.optimization.o3.build.optabr=.O3
-#sparkevo_itronix_sensorboard.menu.optimization.o3gcse.build.optabr=.O3ng
-#sparkevo_itronix_sensorboard.menu.optimization.sizegcse.build.gcse=-fno-gcse
-#sparkevo_itronix_sensorboard.menu.optimization.o3gcse.build.gcse=-fno-gcse
+#sparkevo_itronix_sensorbox.menu.optimization.size=-Os (size)
+#sparkevo_itronix_sensorbox.menu.optimization.sizegcse=-Os (size, no GCSE)
+#sparkevo_itronix_sensorbox.menu.optimization.o3=-O3 (speed)
+#sparkevo_itronix_sensorbox.menu.optimization.o3gcse=-O3 (speed, no GCSE)
+#sparkevo_itronix_sensorbox.menu.optimization.size.build.optimizationlevel=-Os
+#sparkevo_itronix_sensorbox.menu.optimization.sizegcse.build.optimizationlevel=-Os
+#sparkevo_itronix_sensorbox.menu.optimization.o3.build.optimizationlevel=-O3
+#sparkevo_itronix_sensorbox.menu.optimization.o3gcse.build.optimizationlevel=-O3
+#sparkevo_itronix_sensorbox.menu.optimization.size.build.optabr=.Os
+#sparkevo_itronix_sensorbox.menu.optimization.sizegcse.build.optabr=.Osng
+#sparkevo_itronix_sensorbox.menu.optimization.o3.build.optabr=.O3
+#sparkevo_itronix_sensorbox.menu.optimization.o3gcse.build.optabr=.O3ng
+#sparkevo_itronix_sensorbox.menu.optimization.sizegcse.build.gcse=-fno-gcse
+#sparkevo_itronix_sensorbox.menu.optimization.o3gcse.build.gcse=-fno-gcse
 
 #----------------------------------------#
 # TWI OPTIONS                            #
 #________________________________________#
-sparkevo_itronix_sensorboard.menu.wiremode.mors=Master or Slave (saves flash and RAM)
-sparkevo_itronix_sensorboard.menu.wiremode.mors.build.wire=MORS
+sparkevo_itronix_sensorbox.menu.wiremode.mors=Master or Slave (saves flash and RAM)
+sparkevo_itronix_sensorbox.menu.wiremode.mors.build.wire=MORS
 
 #----------------------------------------#
 # printf() version options               #
 #________________________________________#
-sparkevo_itronix_sensorboard.menu.printf.default=Default (doesn't print floats, 1.4k flash use)
+sparkevo_itronix_sensorbox.menu.printf.default=Default (doesn't print floats, 1.4k flash use)
 
 #----------------------------------------#
 # PWM Pinning options                    #
 #________________________________________#
-sparkevo_itronix_sensorboard.menu.PWMmux.A_default=PB0-2, PA3-5, 1-series: PC0/1 (default)
-sparkevo_itronix_sensorboard.menu.PWMmux.A_default.build.pwmflags=-DUSE_TIMERD0_PWM
-sparkevo_itronix_sensorboard.menu.PWMmux.A_default.build.pwmabr=6A
+sparkevo_itronix_sensorbox.menu.PWMmux.A_default=PB0-2, PA3-5, 1-series: PC0/1 (default)
+sparkevo_itronix_sensorbox.menu.PWMmux.A_default.build.pwmflags=-DUSE_TIMERD0_PWM
+sparkevo_itronix_sensorbox.menu.PWMmux.A_default.build.pwmabr=6A
 
 #----------------------------------------#
 # attachInterrupt Mode                   #
 #________________________________________#
-sparkevo_itronix_sensorboard.menu.attach.allenabled=On all pins, with new implementation.
-sparkevo_itronix_sensorboard.menu.attach.allenabled.build.attachmode=-DCORE_ATTACH_ALL
+sparkevo_itronix_sensorbox.menu.attach.allenabled=On all pins, with new implementation.
+sparkevo_itronix_sensorbox.menu.attach.allenabled.build.attachmode=-DCORE_ATTACH_ALL
 
 #----------------------------------------#
 # WDT MODE                               #
 #________________________________________#
-sparkevo_itronix_sensorboard.menu.WDTtimeout.disabled=Disabled (recommended)
-sparkevo_itronix_sensorboard.menu.WDTwindow.disabled=No delay before window "opens"
-sparkevo_itronix_sensorboard.menu.WDTtimeout.disabled.bootloader.wdttimeoutbits=0000
-sparkevo_itronix_sensorboard.menu.WDTwindow.disabled.bootloader.wdtwindowbits=0000
+sparkevo_itronix_sensorbox.menu.WDTtimeout.disabled=Disabled (recommended)
+sparkevo_itronix_sensorbox.menu.WDTwindow.disabled=No delay before window "opens"
+sparkevo_itronix_sensorbox.menu.WDTtimeout.disabled.bootloader.wdttimeoutbits=0000
+sparkevo_itronix_sensorbox.menu.WDTwindow.disabled.bootloader.wdtwindowbits=0000
