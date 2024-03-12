@@ -196,8 +196,8 @@ sparkevo_rpmdot.menu.millis.enabled=Enabled (default timer)
 #----------------------------------------#
 # STARTUP TIME (SUT)                     #
 #________________________________________#
-sparkevo_rpmdot.menu.startuptime.8=8ms
-sparkevo_rpmdot.menu.startuptime.8.bootloader.SYSCFG1=0x04
+sparkevo_rpmdot.menu.startuptime.0=0ms
+sparkevo_rpmdot.menu.startuptime.0.bootloader.SYSCFG1=0x00
 
 #----------------------------------------#
 # TWI OPTIONS                            #
