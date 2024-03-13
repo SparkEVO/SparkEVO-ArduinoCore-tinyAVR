@@ -7,7 +7,7 @@
 name=SparkEVO tinyAVR Boards
 versionnum.major=1
 versionnum.minor=0
-versionnum.patch=2
+versionnum.patch=3
 versionnum.postfix=
 versionnum.released=1
 
