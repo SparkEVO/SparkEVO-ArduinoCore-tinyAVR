@@ -179,7 +179,7 @@ sparkevo_rpmdot.menu.bodvoltage.1v8.bootloader.bodlevbits=000
 #----------------------------------------#
 # BOD MODE                               #
 #________________________________________#
-sparkevo_rpmdot.menu.bodmode.disabled=Enabled/Enabled
+sparkevo_rpmdot.menu.bodmode.enabled=Enabled/Enabled
 sparkevo_rpmdot.menu.bodmode.enabled.bootloader.bodmodebits=00101
 
 #----------------------------------------#
