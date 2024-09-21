@@ -154,14 +154,14 @@ sparkevo_rpmdot.upload.prog_interlock=
 #_____________________________________________#
 # CHIP                                   #
 #________________________________________#
-sparkevo_rpmdot.menu.chip.414=ATtiny414
-sparkevo_rpmdot.menu.chip.414.build.board=AVR_ATtiny414
-sparkevo_rpmdot.menu.chip.414.build.attiny=414
-sparkevo_rpmdot.menu.chip.414.upload.maximum_size=4096
-sparkevo_rpmdot.menu.chip.414.build.mrelax=
-sparkevo_rpmdot.menu.chip.414.upload.maximum_data_size=256
-sparkevo_rpmdot.menu.chip.414.bootloader.TCD0CFG_avrdude="-Ufuse4:w:0x00:m"
-sparkevo_rpmdot.menu.chip.414.bootloader.TCD0CFG_serialupdi=4:0x00
+sparkevo_rpmdot.menu.chip.814=ATtiny814
+sparkevo_rpmdot.menu.chip.814.build.board=AVR_ATtiny814
+sparkevo_rpmdot.menu.chip.814.build.attiny=814
+sparkevo_rpmdot.menu.chip.814.upload.maximum_size=8192
+sparkevo_rpmdot.menu.chip.814.build.mrelax=
+sparkevo_rpmdot.menu.chip.814.upload.maximum_data_size=512
+sparkevo_rpmdot.menu.chip.814.bootloader.TCD0CFG_avrdude="-Ufuse4:w:0x00:m"
+sparkevo_rpmdot.menu.chip.814.bootloader.TCD0CFG_serialupdi=4:0x00
 
 #----------------------------------------#
 # CLOCK SOURCE                           #
@@ -194,6 +194,18 @@ sparkevo_rpmdot.menu.eesave.enable.bootloader.eesavebit=1
 sparkevo_rpmdot.menu.millis.enabled=Enabled (default timer)
 
 #----------------------------------------#
+# UPDI/RESET PIN CONFIGURATION           #
+#________________________________________#
+#Expert mode - if you understand what these mean, uncomment them to enable.
+#there are a few lines like this in platform.txt too that can be uncommented to enable for uploads, not just when burning bootloader
+#sparkevo_rpmdot.menu.resetpin.UPDI=UPDI (no reset pin)
+#sparkevo_rpmdot.menu.resetpin.UPDI.bootloader.resetpinbits=01
+#sparkevo_rpmdot.menu.resetpin.reset=Reset (DANGER - Bricks chip w/out HV UPDI programmer!)
+#sparkevo_rpmdot.menu.resetpin.reset.bootloader.resetpinbits=10
+#sparkevo_rpmdot.menu.resetpin.gpio=GPIO (DANGER - Bricks chip w/out HV UPDI programmer - Use PCHV)
+#sparkevo_rpmdot.menu.resetpin.gpio.bootloader.resetpinbits=00
+
+#----------------------------------------#
 # STARTUP TIME (SUT)                     #
 #________________________________________#
 sparkevo_rpmdot.menu.startuptime.0=0ms
@@ -203,6 +215,7 @@ sparkevo_rpmdot.menu.startuptime.0.bootloader.SYSCFG1=0x00
 # TWI OPTIONS                            #
 #________________________________________#
 sparkevo_rpmdot.menu.wiremode.mors=Master or Slave (saves flash and RAM)
+sparkevo_rpmdot.menu.wiremode.mors.build.wire=MORS
 
 #----------------------------------------#
 # printf() version options               #
