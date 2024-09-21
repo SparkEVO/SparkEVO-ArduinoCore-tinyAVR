@@ -154,6 +154,14 @@ sparkevo_rpmdot.upload.prog_interlock=
 #_____________________________________________#
 # CHIP                                   #
 #________________________________________#
+sparkevo_rpmdot.menu.chip.414=ATtiny414
+sparkevo_rpmdot.menu.chip.414.build.board=AVR_ATtiny414
+sparkevo_rpmdot.menu.chip.414.build.attiny=414
+sparkevo_rpmdot.menu.chip.414.upload.maximum_size=4096
+sparkevo_rpmdot.menu.chip.414.build.mrelax=
+sparkevo_rpmdot.menu.chip.414.upload.maximum_data_size=256
+sparkevo_rpmdot.menu.chip.414.bootloader.TCD0CFG_avrdude="-Ufuse4:w:0x00:m"
+sparkevo_rpmdot.menu.chip.414.bootloader.TCD0CFG_serialupdi=4:0x00
 sparkevo_rpmdot.menu.chip.814=ATtiny814
 sparkevo_rpmdot.menu.chip.814.build.board=AVR_ATtiny814
 sparkevo_rpmdot.menu.chip.814.build.attiny=814
