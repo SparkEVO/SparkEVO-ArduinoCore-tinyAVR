@@ -376,8 +376,8 @@ sparkevo_zeroabs.menu.millis.timerd.build.millistimer=B0
 #----------------------------------------#
 # STARTUP TIME (SUT)                     #
 #________________________________________#
-sparkevo_zeroabs.menu.startuptime.16=16ms
-sparkevo_zeroabs.menu.startuptime.16.bootloader.SYSCFG1=0x05
+sparkevo_zeroabs.menu.startuptime.2=2ms
+sparkevo_zeroabs.menu.startuptime.2.bootloader.SYSCFG1=0x02
 
 #----------------------------------------#
 # TWI OPTIONS                            #
