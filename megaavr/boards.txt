@@ -359,7 +359,7 @@ sparkevo_zeroabs.menu.eesave.enable.bootloader.eesavebit=1
 # MILLIS TIMER                           #
 #________________________________________#
 sparkevo_zeroabs.menu.millis.timerb0=TCB0 (breaks tone() and Servo)
-sparkevo_zeroabs.menu.millis.timerd.build.millistimer=B0
+sparkevo_zeroabs.menu.millis.timerb0.build.millistimer=B0
 
 #----------------------------------------#
 # UPDI/RESET PIN CONFIGURATION           #
