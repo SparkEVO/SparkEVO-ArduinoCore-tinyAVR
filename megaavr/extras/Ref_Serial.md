@@ -133,7 +133,9 @@ The "other" RS485 mode, according to the ATtiny3216/3217 datasheet:
 "Writing RS485[1] to `1` enables the RS-485 mode which automatically sets the TXD pin to output one clock cycle
 before starting transmission and sets it back to input when the transmission is complete."
 
-Obviously this begs the question of how any of the devices involved are supposed to prevent collisions - I don't think there *is* a way. That would explain why this feature was removed from the Dx-series documentation (it was present in the initial DA-series IO headers, and is likely still in the hardware...).
+Obviously this begs the question of how any of the devices involved are supposed to prevent collisions - I don't think there *is* a way. That would explain why this feature was removed from the Dx-series documentation. I was suspecting this was going to get quietly killed, but it seems to in fact be coming back with the V2 USART debuting on the LA and likely EC-series parts, under the name of hardware flow control.
+
+Yes, serial will need total reimplementation.
 
 
 
@@ -141,30 +143,34 @@ Obviously this begs the question of how any of the devices involved are supposed
 One extremely common task in embedded programming, particularly debugging embedded code, is printing data out as hexadecimal numbers. There is of course,  `Serial.print(number,HEX)`, but not only does that burn more flash, it doesn't add an appropriate number of leading zeros (making it hard to read). It's designed to print numbers in the way that programmers would want them printed - the number of leading zeros will match the data type, ie if you print an unsigned long, with 1 in the low byte and 0's in the other three, it will print 00000001, not 1. As you would expect, printHexln() does the same thing and adds a newline.
 Below is an unabridged list of the versions:
 ```c++
-    void                printHex(const     uint8_t              b);
-    void                printHex(const    uint16_t  w, bool s = 0);
-    void                printHex(const    uint32_t  l, bool s = 0);
-    void                printHex(const      int8_t  b)              {printHex((uint8_t )   b);           }
-    void                printHex(const        char  b)              {printHex((uint8_t )   b);           }
-    void                printHex(const     int16_t  w, bool s = 0)  {printHex((uint16_t)w, s);           }
-    void                printHex(const     int32_t  l, bool s = 0)  {printHex((uint32_t)l, s);           }
-    void              printHexln(const      int8_t  b)              {printHex((uint8_t )b   ); println();}
-    void              printHexln(const        char  b)              {printHex((uint8_t )b   ); println();}
-    void              printHexln(const     uint8_t  b)              {printHex(          b   ); println();}
-    void              printHexln(const    uint16_t  w, bool s = 0)  {printHex(          w, s); println();}
-    void              printHexln(const    uint32_t  l, bool s = 0)  {printHex(          l, s); println();}
-    void              printHexln(const     int16_t  w, bool s = 0)  {printHex((uint16_t)w, s); println();}
-    void              printHexln(const     int32_t  l, bool s = 0)  {printHex((uint32_t)l, s); println();}
-    uint8_t *           printHex(          uint8_t* p, uint8_t len, char sep = 0            );
-    uint16_t *          printHex(         uint16_t* p, uint8_t len, char sep = 0, bool s = 0);
-    volatile uint8_t *  printHex(volatile  uint8_t* p, uint8_t len, char sep = 0            );
-    volatile uint16_t * printHex(volatile uint16_t* p, uint8_t len, char sep = 0, bool s = 0);
+    void                  printHex(const     uint8_t              b);
+    void                  printHex(const    uint16_t  w, bool s = 0);
+    void                  printHex(const      int8_t  b)              {printHex((uint8_t  )     b);        }
+    void                  printHex(const        char  b)              {printHex((uint8_t  )     b);        }
+    void                  printHex(const     int16_t  w, bool s = 0)  {printHex((uint16_t )  w, s);        }
+    void                  printHex(const    uint32_t  l, bool s = 0)  {_prtHxdw((uint8_t *) &l, s);        } // _prtHxdw() is a private member function
+    void                  printHex(const     int32_t  d, bool s = 0)  {_prtHxdw((uint8_t *) &d, s);        } // that prints a 4 byte type from a pointer,
+    void                  printHex(const       float  f, bool s = 0)  {_prtHxdw((uint8_t *) &f, s);        } // and these function definitions pick
+    void                  printHex(const      double  f, bool s = 0)  {_prtHxdw((uint8_t *) &f, s);        } // out the argument types it can use and
+    void                printHexln(const      int8_t  b)              {printHex((uint8_t )b   ); println();} // make them pointy.
+    void                printHexln(const        char  b)              {printHex((uint8_t )b   ); println();}
+    void                printHexln(const     uint8_t  b)              {printHex(          b   ); println();}
+    void                printHexln(const    uint16_t  w, bool s = 0)  {printHex(          w, s); println();}
+    void                printHexln(const     int16_t  w, bool s = 0)  {printHex((uint16_t)w, s); println();}
+    void                printHexln(const       float  f, bool s = 0)  {_prtHxdw((uint8_t *) &f, s); println();} // Why float and double? Apparently, the
+    void                printHexln(const      double  f, bool s = 0)  {_prtHxdw((uint8_t *) &f, s); println();} // compiler knows the difference.
+    void                printHexln(const     int32_t  d, bool s = 0)  {_prtHxdw((uint8_t *) &d, s); println();} // with just float, it can't tell if an
+    void                printHexln(const    uint32_t  l, bool s = 0)  {_prtHxdw((uint8_t *) &l, s); println();} // a "long" "unsigned long" or "float"
+    uint8_t *             printHex(          uint8_t* p, uint8_t len, char sep = 0            );
+    uint16_t *            printHex(         uint16_t* p, uint8_t len, char sep = 0, bool s = 0);
+    volatile uint8_t *    printHex(volatile  uint8_t* p, uint8_t len, char sep = 0            );
+    volatile uint16_t *   printHex(volatile uint16_t* p, uint8_t len, char sep = 0, bool s = 0);
 ```
 
 There are two particular features worth noting in addition to the correct number of leading zeros, and the fact that it is not horrendously bloated like full serial print.
 1. For 16 and 32-bit datatypes, you can pass a boolean as the second argument. If it is true, the endianness will be reversed.
 
-2. You can also pass a pointer to either a uint8_t or a uint16_t variable. In this case the arguments are:
+2. You can also pass a pointer to either a uint8_t or a uint16_t variable (likely part of an array). In this case the arguments are:
 ```c
 uint8_t *  printHex(uint8_t * p, uint8_t len, char sep = 0);
 uint16_t * printHex(uint16_t* p, uint8_t len, char sep = 0, bool s = 0);
@@ -209,7 +215,6 @@ Many peripherals have a couple of 16-bit registers, amongst a sea of 8-bit ones.
 This starts the serial port. Options should be made by combining the constant referring to the desired character size, parity and stop bit length, zero or more of the modifiers below
 
 #### Basic USART options
-
 | Data Size | Parity | 1 stop bit | 2 stop bit |
 |-----------|--------|------------|------------|
 | 5 bit     |  NONE  | SERIAL_5N1 | SERIAL_5N2 |
@@ -225,9 +230,11 @@ This starts the serial port. Options should be made by combining the constant re
 | 7 bit     |   ODD  | SERIAL_7O1 | SERIAL_7O2 |
 | 8 bit     |   ODD  | SERIAL_8O1 | SERIAL_8O2 |
 
+**Tip**: SERIAL_8N2 is much more robust to clock variation than SERIAL_8N1. I advocate defaulting to using two stop bits unless there's a compelling reason not to (there almost never is, because any signal that could be output with 2 stop bits selected could also have been output idf only 1 stop bit was selected, if you assume that
 
 #### Modifiers
 * SERIAL_RS485        - Enables RS485 mode.
+* SERIAL_RS485_OTHER  - sets the othger RS485 bit (if present) or attempts to (if not). It is unclear whether this bit is setable and if settable, whether it has any function. This feature returns as hardware flow control in the refreshged USART coming on the LA.
 * SERIAL_OPENDRAIN    - Sets port to open-drain mode
 * SERIAL_LOOPBACK     - Enables single wire operation and internally connects tx to rx.
 * SERIAL_TX_ONLY      - Enables only Tx.
@@ -363,7 +370,6 @@ To use the synchronous mode, you must do four things:
 * Add the `SERIAL_MODE_SYNC` constant to the second argument to Serial.begin() by ORing it with the rest of the value, ex: `Serial.begin(100000 >> 3, (SERIAL_MODE_SYNC | SERIAL_8N1));` should start USART0 in sync mode with a baud rate of 100kbaud.
 
 There is a macro which *should* work for this (done as a macro so it doesn't add anything to the class if not used). This should be treated as experimental (the API may change)
-
 ```c
 syncBegin(port, baud, config, syncoptions);
 /*example*/
@@ -465,7 +471,7 @@ While there's always some dead time between bits, that is usually *very* small, 
 
 
 ### How bad baud rate calculation used to be
-
+This chart shows what baud rates will work at what system clocks, on classic AVRs and modern AVRs. the difference is shocking.
 [AVR Baud Rate Accuracy Chart](https://docs.google.com/spreadsheets/d/1rzxFOs6a89jr69ouCdZp8Za1PuUdj1u1IoepTaHVFPk/edit?usp=sharing)
 
 It was mentioned previously that one of most common places to encounter grossly inaccurate baud rates is classic AVRs. This example illustrates just *how bad* one of the most popular baud rate was on classic AVRs, namely 115200 baud. "Well it says the baud rate can be up to 1/8th the system clock, and I'm running at 8 MHz, no problem" you think "And see, it talks just fine to my other classic AVR". Nope. When you do this, you've dug a big hole, covered it with a tablecloth and waited until the sun went down. Adding a modern AVR or anything with a decent baud rate generator is then taking a late night stroll in the area of that covered hole. You're begging for trouble
@@ -606,7 +612,7 @@ So let's consider  1 USART frame (character), data 0bABCDEFGH (where uppercase l
 
 Now the transmitter is timing these bits based on the baud rate you asked for, and assumes it's timebase is accurate. So is the receiver. The internal osciallators on modern AVRs really are good enough that you rarely need to worry about using a crystal in most situations, including this. but it deos raise the prospect of a specific and baffling behavior where **Short bursts of data work, but longer messages turn into gibberish partway through**, occurring in in one direction (from the faster to the slower device (eg, from a device a a percent or two fast to one a percent or two slow).
 
-This is easy to understand if you imagine what is being output by the transmitter. If it's g
+This is easy to understand if you imagine what is being output by the transmitter.
 
 
 ### Minimum and Maximum baud rates
